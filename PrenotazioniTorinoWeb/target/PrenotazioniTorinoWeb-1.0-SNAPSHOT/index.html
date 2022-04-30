@@ -1,0 +1,1235 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:v-on="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <META HTTP-EQUIV="Pragma" CONTENT="no-cache">
+    <META HTTP-EQUIV="Expires" CONTENT="-1">
+    <title>Ripetizioni Torino</title>
+    <link rel="icon" href="img/logo_small_icon_only.png"  type="icon"/>
+    <link rel="stylesheet" href="style.css" type="text/css">
+    <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+
+
+</head>
+<body>
+<!--Lgin Page-->
+<div id="login" v-show = "this.show">
+    <div class="card">
+        <article class="card-body ">
+            <h4 class="card-title text-center mb-4 mt-1">Prenotazioni Torino</h4>
+            <hr>
+            <p class="text-success text-center">Accedi</p>
+            <div class="container-fluid align-items-center w-50" >
+                <form name="myform">
+                    <!-- Email Form -->
+                    <div class="form-group">
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">
+                                    <i class="fa fa-user">
+                                        <img src="img/email.webp" height="24" width="24" alt="email icon"/>
+                                    </i>
+                                </span>
+                            </div>
+                            <input v-model="email" class="form-control" placeholder="Username" type="text">
+                        </div>
+                    </div>
+                    <!-- Password Form -->
+                    <div class="form-group">
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">
+                                    <i class="fa fa-lock">
+                                        <img src="img/password.webp" height="24" width="24" alt="password icon"/>
+                                    </i>
+                                </span>
+                            </div>
+                            <input class="form-control" v-model="password" placeholder="******" type="password">
+                        </div>
+                    </div>
+
+                    <!-- LOGIN BUTTON -->
+                    <div class="form-row text-center mt-1">
+                        <div class="col-12">
+                            <input type="sbumit" v-on:click="this.login" value="Accedi" class="btn btn-primary btn-block "/>
+                        </div>
+                    </div>
+
+                    <!-- REGISTRATI TEXT -->
+                    <p class="text-center"><a v-on:click="this.passtosignup" class="btn">Registrati</a></p>
+                </form>
+            </div>
+        </article>
+    </div>
+</div>
+
+<!--Signup Page-->
+<div id="sign-up" v-show = "this.show">
+    <div class="card">
+        <article class="card-body">
+            <h4 class="card-title text-center mb-4 mt-1">Prenotazioni Torino</h4>
+            <hr>
+            <p class="text-success text-center">Registrati</p>
+            <div class="container-fluid align-items-center w-50" >
+                <form>
+                    <!-- NOME SIGNUP -->
+                    <div class="form-group">
+                        <div class="input-group">
+                            <input v-model="nome" class="form-control" placeholder="Nome" type="text">
+                        </div>
+                    </div>
+                    <!-- COGNOME SIGNUP -->
+                    <div class="form-group">
+                        <div class="input-group">
+                            <input class="form-control" v-model="cognome" placeholder="Cognome" type="text">
+                        </div>
+                    </div>
+                    <!-- EMAIL SIGNUP -->
+                    <div class="form-group">
+                        <div class="input-group">
+                            <input class="form-control" v-model="email" placeholder="Username" type="text">
+                        </div>
+                    </div>
+                    <!-- PASSWORD SIGNUP -->
+                    <div class="form-group">
+                        <div class="input-group">
+                            <input class="form-control" v-model="password" placeholder="******" type="password">
+                        </div>
+                    </div>
+                    <!-- SIGNUP BUTTON -->
+                    <div class="form-row text-center mt-1">
+                        <div class="col-12">
+                            <button type="submit" v-on:click="this.signup" class="btn btn-primary btn-block">Registrati</button>
+                        </div>
+                    </div>
+                    <!-- RITORNO LOGIN -->
+                    <p class="text-center"><a v-on:click="this.passToLogin" class="btn">Ritorna Al Login</a></p>
+                </form>
+            </div>
+        </article>
+    </div>
+</div>
+
+<!-- Administrator Page -->
+<div id="homepage-administrator" v-show="this.show">
+    <!-- NAVBAR -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+            <a class="navbar-brand">Admin</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <!-- HOMEPAGE -->
+                    <li class="nav-item"><a class="nav-link active btn" aria-current="page" v-on:click="this.passHome" >Home</a></li>
+                    <!-- SEZIONE AMMINISTRAZIONE -->
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown1" role="button" data-bs-toggle="dropdown" aria-expanded="false">Amministrazione</a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item btn" v-on:click="this.passRipetizioni">Visualizza Prenotazioni</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item btn" v-on:click="this.passCorsi">Corsi</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item btn" v-on:click="this.passDocenti">Docenti</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item btn" v-on:click="this.passAssocia">Associazione</a></li>
+                        </ul>
+                    </li>
+                    <!-- SEZIONE PRENOTAZIONI -->
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown2" role="button" data-bs-toggle="dropdown" aria-expanded="false">Prenotazioni</a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item btn" v-on:click="this.passPrenota">Prenotazione</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <!-- ADMING HOMEPAGE -->
+    <div class="container-fluid w-75 mt-5" id="homepage-amministrator" v-show="this.home">
+        <div class="accordion" id="accordionPanelsStayOpenExample" >
+            <div class="accordion-item" >
+                <h2 class="accordion-header" id="panelsStayOpen-headingOne" >
+                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="true" aria-controls="panelsStayOpen-collapseOne" >Informazioni Utente</button>
+                </h2>
+                <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse show" aria-labelledby="panelsStayOpen-headingOne">
+                    <div class="accordion-body">
+                        <p>Username:  {{login.email}}</p>
+                        <p>Nome:  {{login.nome}} </p>
+                        <p>Cognome:  {{login.cognome}} </p>
+                    </div>
+                </div>
+            </div>
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="panelsStayOpen-headingTwo">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseTwo" aria-expanded="false" aria-controls="panelsStayOpen-collapseTwo" v-on:click="this.mostrastudenti">Studenti</button>
+                </h2>
+                <div id="panelsStayOpen-collapseTwo" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingTwo">
+                    <div class="accordion-body">
+                        <table class="table w-100" >
+                            <tr v-for="item in resultJson" class="w-100">
+                                <td >{{item.nome}}</td>
+                                <td >{{item.cognome}}</td>
+                                <td >{{item.ruolo}}</td>
+                                <td class="sep"></td>
+                                <td class="but"><button type="button" class="btn" v-on:click="administrator.delete(item.id)">Elimina</button></td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="form-row text-center mt-1">
+            <div class="col-12">
+                <button type="button" class="btn btn-primary " v-on:click="this.logout_admin">Logout</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Pagina Prenotazioni (ADMIN) -->
+<div id="visualizza-prenotazioni"  v-show="administrator.prenotazioni"  class="container-fluid text-center w-75">
+    <h1>Ripetizioni prenotate</h1>
+    <div class="card">
+        <div class="card-body">
+            <table class="table w-100">
+                <thead><tr><th>Docente</th><th>Utente</th><th>Corso</th><th>Data</th><th>Ora</th><th>Stato</th></tr></thead>
+                <tbody>
+                <tr v-for="item in resultJson" class="w-100">
+                    <td >{{item.docente}}</td>
+                    <td >{{item.utente}}</td>
+                    <td >{{item.corso}}</td>
+                    <td >{{item.data}}</td>
+                    <td >{{item.ora}}</td>
+                    <td >{{item.stato}}</td>
+                    <td ></td>
+                    <td ><button type="button" class="btn btn-sm"  v-on:click="visualizzaprenotazioni.delete(item.idDocente,item.idCorso,item.idUtente,item.data,item.ora)">Elimina</button></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<!-- Pagina Corsi (ADMIN) -->
+<div id="vis-corsi" v-show="administrator.corsi"  class="container-fluid w-75 " >
+    <div class="card mt-2" v-show="this.page1" >
+        <div class="card-header bg-white text-center" >
+            <h1>Corsi</h1>
+        </div>
+        <div class="card-body">
+            <table class="table w-100" >
+                <thead>
+                <tr><th>ID</th> <th>Nome</th></tr>
+                </thead>
+                <tbody>
+                <tr v-for="item in resultJson" class="w-100">
+                    <td class="w-5">{{item.id}}</td>
+                    <td class="w-30">{{item.nome}}</td>
+                    <td class="w-55"></td>
+                    <td class="but" ><button type="button" class="btn btn-sm"  v-on:click="visualizzaCorsi.delete(item.id)">Elimina</button></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="card-footer bg-white text-center" ><button type="button" class="btn btn-primary mt-3" v-on:click="this.topage2">Aggiungi Corso</button></div>
+    </div >
+    <div class="card mt-2" v-show="this.page2">
+        <div class="card-body">
+            <form name="myform2">
+                <div class="row g-3">
+                    <div class="col"><input type="text" class="form-control" placeholder="Nome corso" v-model="nome"/></div>
+                </div>
+                <div class="text-center"><input type="button" value="Aggiugi corso" class="btn btn-primary mt-3" v-on:click="this.addCorso"/></div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- Pagina Docenti (ADMIN) -->
+<div id="visualizza-docenti" v-show="administrator.docenti"  class="container-fluid w-75">
+    <h1 class="text-center mt-5">Docenti</h1>
+    <div class="card" v-show="this.page1">
+        <div class="card-body" >
+            <table class="table w-100" >
+                <thead>
+                <tr><th>ID</th> <th class="left">Nome</th> <th class="left">Cognome</th></tr>
+                </thead>
+                <tbody>
+                <tr v-for="item in resultJson" class="w-100">
+                    <td class="w-10" >{{item.id}}</td>
+                    <td class="w-15 left">{{item.nome}}</td>
+                    <td class="w-20 left">{{item.cognome}}</td>
+                    <td class="w-15"></td>
+                    <td class="but"><button type="button" class="btn btn-sm"  v-on:click="visualizzaDocenti.delete(item.id)">Elimina</button></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="card-footer text-center bg-white">
+            <button type="button" class="btn btn-primary mt-3 " v-on:click="this.topage2">Aggiungi Docente</button>
+        </div>
+    </div>
+    <div class="card mt-2" v-show="this.page2">
+        <div class="card-body">
+            <form name="myform2">
+                <div class="row g-3">
+                    <div class="col">
+                        <input type="text" class="form-control" placeholder="Nome Docente" v-model="nome"/>
+                    </div>
+                    <div class="col">
+                        <input type="text" class="form-control" placeholder="Cognome Docente" v-model="cognome"/>
+                    </div>
+                </div>
+                <div class="text-center">
+                    <input type="button" value="Aggiugi Docente" class="btn btn-primary mt-3" v-on:click="this.addDocente"/>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- Pagina Associazioni Corso/Docente (ADMIN) -->
+<div class="container text-center" id="associazione-c-d" v-show="administrator.associa">
+    <div class="card mt-2" >
+        <div class="card-body">
+            <form name="myform3">
+                <div class="row g-3">
+                    <div class="col">
+                        <input id="course_associazione" type="text" class="form-control" placeholder="id corso" v-model="corso"/>
+                    </div>
+                    <div class="col">
+                        <input id="docente_associazione" type="text" class="form-control" placeholder="id docente" v-model="docente"/>
+                    </div>
+                    <div class="col">
+                        <select class="form-select" aria-label="Default select example" v-model="disp">
+                            <option selected disabled>Disponibilità</option>
+                            <option value="1">Lunedì</option>
+                            <option value="2">Martedì</option>
+                            <option value="3">Mercoledì</option>
+                            <option value="4">Giovedì</option>
+                            <option value="5">Venerdì</option>
+                            <option value="6">Sempre</option>
+                        </select>
+                    </div>
+                </div>
+                <div>
+                    <input type="button" value="Aggiugi Associazione" class="btn btn-primary mt-3" v-on:click="this.addAssociazione"/>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="row mt-5">
+        <div class="col">
+            <div class="card">
+                <div class="card-body">
+                    <table class="table w-100" >
+                        <thead>
+                        <tr>
+                            <th>ID</th> <th class="left">Nome</th> <th class="left">Cognome</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr v-for="item in visualizzaDocenti.resultJson" class="w-100">
+                            <td class="w-10">{{item.id}}</td>
+                            <td class="w-15 left">{{item.nome}}</td>
+                            <td class="w-20 left">{{item.cognome}}</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="card">
+                <div class="card-body">
+                    <table class="table w-100" >
+                        <thead>
+                        <tr>
+                            <th>ID</th> <th>Nome</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr v-for="item in visualizzaCorsi.resultJson" class="w-100">
+                            <td class="w-5">{{item.id}}</td>
+                            <td class="w-30">{{item.nome}}</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+
+    <div class="row mt-5">
+        <h1 class="text-center">Associazione Docente-corso</h1>
+        <div class="card" >
+            <div class="card-body" >
+                <table class="table w-100" >
+                    <thead>
+                    <tr><th>Docente</th> <th class="left">Corso</th></tr>
+                    </thead>
+                    <tbody>
+                     <tr v-for="item in resultJson3" class="w-100">
+                        <td class="w-10" >{{item.docente}}</td>
+                        <td class="w-15 left">{{item.corso}}</td>
+                        <td class="w-15"></td>
+                        <td class="but right"><button type="button" class="btn btn-sm"  v-on:click="assocaizione.delAssociazione(item.docente,item.corso)">Elimina</button></td>
+                    </tr>
+
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<!-- Pagina Prenotazioni (ADMIN) -->
+<div id="prenota-ripetizioni" v-show="administrator.prenota" class="text-center container-fluid mt-3" >
+    <h1>Prenota Ripetizioni</h1>
+    <!-- Catalogo -->
+    <div class="container mt-3">
+        <div class="accordion" id="accordionExample">
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="headingTwo">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo" v-on:click="this.ripetizioni">Le tue prenotazioni</button>
+                </h2>
+                <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+                    <div class="accordion-body">
+                        <table class="table">
+                            <thead>
+                            <tr>
+                                <th>Docente</th> <th>Corso</th> <th>Utente</th> <th>Data</th> <th>Ora</th> <th>Stato</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr v-for="item in resultJson2" class="w-100">
+                                <td class="w-10">{{item.docente}}</td>
+                                <td class="w-20">{{item.corso}}</td>
+                                <td class="w-10">{{item.utente}}</td>
+                                <td class="w-10">{{item.data}}</td>
+                                <td class="w-10">{{item.ora}}</td>
+                                <td class="w-10">{{item.stato}}</td>
+                                <td class="w-10 right"><button type="button" class="btn btn-sm"  v-on:click="prenotaRipetizioniAdmin.conferma(item.idDocente,item.idCorso,item.ora,item.data)">Conferma</button></td>
+                                <td class="w-10 right" ><button type="button" class="btn btn-sm"  v-on:click="prenotaRipetizioniAdmin.disdici(item.idDocente,item.idCorso,item.ora,item.data)">Disdici</button></td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="headingOne">
+                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne" v-on:click="catalogoRipetizioni.getRipetizioni">
+                        Catalogo
+                    </button>
+                </h2>
+                <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                    <div class="accordion-body">
+                        <table class="table">
+                            <thead>
+                            <tr>
+                                <th>Nome Docente</th> <th>Cognome Docente</th>  <th>Corso</th><th>Giorno</th> <th>Orario</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr v-for="item in catalogoRipetizioni.resultJson" class="w-100">
+                                <td class="w-20">{{item.nome_docente}}</td>
+                                <td class="w-20">{{item.cognome_docente}}</td>
+                                <td class="w-20">{{item.corso}}</td>
+                                <td class="w-20">{{item.giorno}}</td>
+                                <td class="w-10">{{item.ora}}</td>
+                                <td class="w-10 right"><button type="button" class="btn btn-sm"  v-on:click="prenotaRipetizioniAdmin.prenota(item.id_docente,item.id_corso,item.ora,item.giorno)">Prenota</button></td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Student Page -->
+<div id="homepage-student" v-show="this.show">
+    <!-- nav -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+            <a class="navbar-brand">Studente</a>
+
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent2" aria-controls="navbarSupportedContent2" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent2">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0"></ul>
+            </div>
+        </div>
+        <div class="right pr-3">
+            <button type="button" class="btn btn-primary" v-on:click="this.logout_student">Logout</button>
+        </div>
+    </nav>
+   <div class="container text-center mt-5" v-show="this.prenotaRip">
+       <h1>Prenota Ripetizioni</h1>
+       <!-- catalogo e ripetizioni prenotate-->
+       <div class="container mt-3" >
+           <div class="accordion" id="accordionExample2">
+               <div class="accordion-item">
+                   <h2 class="accordion-header" id="headingOne2">
+                       <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne2" aria-expanded="true" aria-controls="collapseOne2">
+                           Catalogo
+                       </button>
+                   </h2>
+                   <div id="collapseOne2" class="accordion-collapse collapse show" aria-labelledby="headingOne2" data-bs-parent="#accordionExample2">
+                       <div class="accordion-body">
+                           <table class="table">
+                               <thead>
+                               <tr>
+                                   <th>Nome Docente</th> <th>Cognome Docente</th>  <th>Corso</th> <th>Giorno</th> <th>Orario</th>
+                               </tr>
+                               </thead>
+                               <tbody>
+                               <tr v-for="item in catalogoRipetizioni.resultJson" class="w-100">
+                                   <td class="w-20">{{item.nome_docente}}</td>
+                                   <td class="w-20">{{item.cognome_docente}}</td>
+                                   <td class="w-10">{{item.corso}}</td>
+                                   <td class="w-10">{{item.giorno}}</td>
+                                   <td class="w-10">{{item.ora}}</td>
+                                   <td class="w-10 right"><button type="button" class="btn btn-sm"  v-on:click="student.prenota(item.id_docente,item.id_corso,item.ora,item.giorno)">Prenota</button></td>
+                               </tr>
+                               </tbody>
+                           </table>
+                       </div>
+                   </div>
+               </div>
+               <div class="accordion-item">
+                   <h2 class="accordion-header" id="headingTwo2">
+                       <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo2" aria-expanded="false" aria-controls="collapseTwo2" v-on:click="this.ripetizioni">
+                           Le tue prenotazioni
+                       </button>
+                   </h2>
+                   <div id="collapseTwo2" class="accordion-collapse collapse" aria-labelledby="headingTwo2" data-bs-parent="#accordionExample2">
+                       <div class="accordion-body">
+                           <table class="table">
+                               <thead>
+                               <tr>
+                                   <th>Docente</th> <th>Corso</th> <th>Utente</th> <th>Data</th> <th>Ora</th> <th>Stato</th>
+                               </tr>
+                               </thead>
+                               <tbody>
+                               <tr v-for="item in resultJson" class="w-100">
+                                   <td class="w-20">{{item.docente}}</td>
+                                   <td class="w-20">{{item.corso}}</td>
+                                   <td class="w-10">{{item.utente}}</td>
+                                   <td class="w-10">{{item.data}}</td>
+                                   <td class="w-10">{{item.ora}}</td>
+                                   <td class="w-10">{{item.stato}}</td>
+                                   <td class="w-10 right"><button type="button" class="btn btn-sm"  v-on:click="student.conferma(item.idDocente,item.idCorso,item.ora,item.data)">Conferma</button></td>
+                                   <td class="w-10 right"><button type="button" class="btn btn-sm"  v-on:click="student.disdici(item.idDocente,item.idCorso,item.ora,item.data)">Disdici</button></td>
+
+                               </tr>
+                               </tbody>
+                           </table>
+                       </div>
+                   </div>
+               </div>
+           </div>
+       </div>
+
+
+
+   </div>
+
+</div>
+
+<!-- Guest Page -->
+<div id="homepage-guest" v-show="this.show">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+            <a class="navbar-brand">Guest</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent2" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+        </div>
+    </nav>
+    <div class="text-center">
+        <h1>Benvenuto Ospite</h1>
+        <p>Essendo loggato come ospite puoi solo visualizzare questa pagina.</p>
+    </div>
+    <div class="container ">
+        <div class="card">
+            <div class="card-head">
+                <h3 class="text-center">Possibili Ripetizioni</h3>
+            </div>
+            <div class="card-body ">
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th>Nome Docente</th> <th>Cognome Docente</th>  <th>Corso</th> <th>Giorno</th> <th>Orario</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr v-for="item in resultJson" class="w-100">
+                        <td class="w-20">{{item.nome_docente}}</td>
+                        <td class="w-20">{{item.cognome_docente}}</td>
+                        <td class="w-20">{{item.corso}}</td>
+                        <td class="w-20">{{item.giorno}}</td>
+                        <td class="w-20">{{item.ora}}</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <div class="container text-center mt-2">
+        <button type="button" class="btn btn-primary" v-on:click="this.logout_guest">Logout</button>
+    </div>
+</div>
+
+<script>
+    //LOGIN VUE
+    var login= new Vue({
+        el:'#login',
+        data:{
+            sessione:'sessione inesistente',
+            email:'guest',
+            nome: '',
+            cognome: '',
+            password:'',
+            link: 'aut-servlet',
+            show: true,
+            objType: '',
+            resultJson:'',
+
+
+        },
+        mounted: function () {
+        },
+        methods: {
+             login:function(){
+                let self=this;
+                let controllo = true;
+                if((this.email === '' || this.password === '') && this.email !== 'guest'){
+                    window.alert("Inserire un'email ed una password");
+                    controllo=false;
+                }
+                if(self.sessione === 'sessione inesistente' && controllo) {
+                    $.post(this.link, {utente: this.email, password: this.password, sessione: this.sessione}, function (data) {
+                        controllo = false;
+                    });
+                    while (controllo === false){
+                        let i = 0;
+                    }
+
+                        $.get(this.link,{utente: this.email, password: this.password},function(data){
+                            let jsonResponse=JSON.parse(JSON.stringify(data));
+                            self.resultJson = jsonResponse.ruolo;
+                            self.sessione = jsonResponse.sessione;
+                            self.nome = jsonResponse.nome;
+                            self.cognome = jsonResponse.cognome;
+                            self.passtocorrectvue();
+                        });
+
+
+                }
+            },
+
+            passtocorrectvue:function(){
+                if(this.resultJson==='ospite'){
+                    this.show = !this;
+                    guest.getRipetizioni();
+                    guest.show = !guest.show;
+                }else if(this.resultJson==='admin'){
+                    this.show = !this;
+                    administrator.show = !administrator.show;
+                }else if(this.resultJson==="studente"){
+                    catalogoRipetizioni.getRipetizioni();
+                    this.show = !this;
+                    student.show = !student.show;
+                }
+            },
+
+
+            passtosignup:function (){
+                this.show = !this;
+                signup.show = !signup.show;
+            }
+        }
+    })
+
+    //SIGNUP VUE
+    var signup = new Vue({
+        el:'#sign-up',
+        data:{
+            nome:'',
+            cognome:'',
+            email:'',
+            password:'',
+            link: 'signup-servlet',
+            show: false,
+            controllo:'',
+        },
+        methods:{
+            signup:async function (){
+                let self=this;
+               await $.post(this.link,{nome: this.nome, cognome: this.cognome, email: this.email, password:this.password},function(data){
+                   if(data==='Utente registrato'){
+                       window.alert("Utente Registrato");
+                       this.passToLogin();
+                    }else if(data === 'Utente non registrato'){
+                       window.alert("Utente non Registrato");
+                   }else if(data === 'Utente giá registrato'){
+                       window.alert("Utente giá registrato");
+                   }
+                });
+            },
+
+            passToLogin:function (){
+                this.show = !this;
+                login.show = !login.show;
+            }
+        }
+
+    })
+
+    //ADMINISTRATOR VUE
+    var administrator = new Vue({
+        el:'#homepage-administrator',
+        data:{
+            show: false,
+            home:true,
+            prenotazioni:false,
+            corsi:false,
+            docenti:false,
+            prenota:false,
+            associa:false,
+            sessione: '',
+            studenti: '',
+            resultJson:'',
+            InfoAdmin:'',
+
+        },
+
+        methods:{
+            logout_admin:function (){
+                login.sessione = "sessione inesistente";
+                window.location.reload();
+            },
+            passtologin:function (){
+                this.show = !this;
+                login.show = !login.show;
+            },
+            mostrastudenti: function (){
+                let self=this;
+                $.get('student-servlet',{studenti:'vuoto', sessione:login.sessione},function (data){
+                    let jsonResponse=JSON.parse(JSON.stringify(data));
+                    if(jsonResponse===null){
+                        window.alert("Sessione scaduta : riaccedi");
+                        window.location.reload();
+                        login.sessione = "sessione inesistente";
+                    }else{
+                        self.resultJson=jsonResponse;
+                        self.stampaStudenti();
+                    }
+
+                });
+            },
+
+            stampaStudenti:function (){
+                let self=this;
+                administrator.passHome();
+            },
+
+            passHome:function (){
+                this.home=true;
+                this.prenotazioni=false;
+                this.corsi=false;
+                this.docenti=false;
+                this.prenota=false;
+                this.associa=false;
+            },
+
+            passRipetizioni:function (){
+                this.home=false;
+                this.prenotazioni=true;
+                this.corsi=false;
+                this.docenti=false;
+                visualizzaprenotazioni.getRipetizioniPrenotate();
+                this.prenota=false;
+                this.associa=false;
+            },
+
+            passCorsi:function (){
+                this.home=false;
+                this.prenotazioni=false;
+                this.corsi=true;
+                this.docenti=false;
+                visualizzaCorsi.getCorso();
+                this.prenota=false;
+                this.associa=false;
+            },
+
+            passDocenti:function (){
+                this.home= false;
+                this.prenotazioni=false;
+                this.corsi=false;
+                this.docenti=true;
+                visualizzaDocenti.getProf();
+                this.prenota=false;
+                this.associa=false;
+            },
+
+            passPrenota:function (){
+                this.home= false;
+                this.prenotazioni=false;
+                this.corsi=false;
+                this.docenti=false;
+                catalogoRipetizioni.getRipetizioni();
+                this.prenota=true;
+                this.associa=false;
+            },
+
+            passAssocia:function (){
+                assocaizione.getAssociazioni();
+                this.home= false;
+                this.prenotazioni=false;
+                this.corsi=false;
+                this.docenti=false;
+                this.prenota=false;
+                visualizzaCorsi.getCorso();
+                visualizzaDocenti.getProf();
+                this.associa=true;
+            },
+
+            delete:async function (id){
+                await $.post('student-servlet',{post:'eliminastudenti',id:id, sessione:login.sessione}, async function (data) {
+                    if (data === "sessione scaduta") {
+                        window.alert("Sessione scaduta : riaccedi");
+                        window.location.reload();
+                        login.sessione = "sessione inesistente";
+                    } else {
+                        await administrator.mostrastudenti();
+                        administrator.passHome();
+                    }
+                });
+            }
+        },
+
+    })
+
+    //vue visualizzazione prenotazioni
+    var visualizzaprenotazioni=new Vue({
+        el:'#visualizza-prenotazioni',
+        data:{
+            resultJson:'',
+        },
+        methods:{
+          getRipetizioniPrenotate:function (){
+             let self=this;
+             $.get('prenotazioni-servlet',{sessione : login.sessione},function (data){
+                let jsonResponse=JSON.parse(JSON.stringify(data));
+                if(jsonResponse === null){
+                    window.alert("Sessione scaduta, riaccedi.");
+                    window.location.reload();
+                    login.sessione = 'sessione inesistente';
+                }else {
+                    self.resultJson = jsonResponse;
+                }
+             });
+          },
+
+
+          delete:async function (docente, corso, utente, data, ora) {
+              await $.post('prenotazioni-servlet', {
+                  post: 'elimina',
+                  docente: docente,
+                  corso: corso,
+                  utente: utente,
+                  data: data,
+                  ora: ora
+              });
+              await catalogoRipetizioni.getRipetizioni();
+              await administrator.passRipetizioni();
+          }
+        },
+
+    })
+
+    //Vue visualizzazione corsi
+    var visualizzaCorsi=new Vue({
+        el:'#vis-corsi',
+        data:{
+            resultJson:'',
+            page1: true,
+            page2:false,
+            nome:'',
+        },
+
+        methods:{
+            addCorso: function (){
+                let self = this;
+                $.post('corso-servlet', {nome: this.nome, sessione : login.sessione, post:'aggiungi'}, function (data) {
+                    if(data === 'Corso aggiunto'){
+                        window.alert("Corso aggiunto con successo");
+                        self.topage1();
+                    }else if(data === 'sessione scaduta'){
+                        login.sessione = 'sessione inesistente';
+                        window.alert("Sessione scaduta, riaccedi.");
+                        window.location.reload();
+                    }else{
+                        window.alert("Corso non aggiunto, riprova.");
+                    }
+                });
+            },
+            topage1: function () {
+                let self = this;
+                self.getCorso();
+                self.page1 = true;
+                self.page2 = false;
+                self.nome = '';
+                administrator.passCorsi();
+            },
+            topage2:function (){
+              this.page1= false;
+              this.page2=true;
+            },
+            getCorso: function (){
+                let self=this;
+                $.get('corso-servlet',{sessione: login.sessione},function (data){
+                    let jsonResponse=JSON.parse(JSON.stringify(data));
+                    if(jsonResponse === null){
+                        window.alert("Sessione scaduta, riaccedi");
+                        window.location.reload();
+                        login.sessione = "sessione inesistente";
+                    }else{
+                        self.resultJson = jsonResponse;
+                    }
+                });
+            },
+            delete:function (id){
+                $.post('corso-servlet',{post:'elimina', id:id, sessione: login.sessione},function (data){
+                    if(data === 'false'){
+                        window.alert("Controllare che il corso non sia collegato a qualche docente")
+                    }else if(data === 'sessione scaduta'){
+                        login.sessione = 'sessione inesistente';
+                        window.alert("Sessione scaduta, riaccedi");
+                        window.location.reload();
+                    }
+                });
+                visualizzaCorsi.topage1();
+            }
+        },
+    })
+
+    //vue visualizzazione docenti
+    var visualizzaDocenti=new Vue({
+        el:'#visualizza-docenti',
+        data:{
+            resultJson:'',
+            page1:true,
+            page2:false,
+            nome:'',
+            cognome:'',
+            id:'',
+        },
+        methods:{
+            getProf:function(){
+                let self=this;
+                $.get('docente-servlet',{sessione:login.sessione},function (data){
+                    let jsonResponse=JSON.parse(JSON.stringify(data));
+                    if(jsonResponse === null){
+                        window.alert("Sessione scaduta, riaccedi");
+                        window.location.reload();
+                        login.sessione = "sessione inesistente";
+                    }else {
+                        self.resultJson = jsonResponse;
+                    }
+                });
+            },
+            topage1: function (){
+                this.page1= true;
+                this.page2= false;
+                this.nome='';
+                this.cognome='';
+                this.getProf();
+                administrator.passDocenti();
+            },
+            topage2:function (){
+                this.page1= false;
+                this.page2= true;
+            },
+            addDocente:function (){
+              $.post('docente-servlet', {nome:this.nome,cognome:this.cognome,sessione:login.sessione,post:'aggiungi'}, function (data){
+                  if(data === "false"){
+                      window.alert("Controllare che il docente non sia collegato a qualche corso");
+                  }else if(data === "sessione scaduta"){
+                      window.alert("Sessione scaduta, riaccedi");
+                      window.location.reload();
+                      login.sessione = "sessione inesistente";
+                  }else{
+                      window.alert("Docente aggiunto con successo");
+                  }
+              });
+              this.topage1();
+            },
+            delete:function (id){
+                let self=this;
+                $.post('docente-servlet',{id:id,post:'elimina', sessione:login.sessione}, function (data){
+                    if(data === 'false'){
+                        window.alert("Controllare che il docente non sia collegato ad un corso");
+                    }
+                });
+                visualizzaDocenti.topage1();
+            }
+        },
+    })
+
+   //vue visualizzazione catalogo
+    var catalogoRipetizioni=new Vue({
+        el:'#catalogo-ripetizioni',
+        data:{
+            resultJson:'',
+        },
+        methods:{
+            getRipetizioni:async function (){
+                let self=this;
+                await $.get('guest-servlet', {},function (data){
+                    let jsonResponse=JSON.parse(JSON.stringify(data));
+                    if(jsonResponse===null){
+                        window.alert("Sessione scaduta, riaccedi.");
+                        window.location.reload();
+                        login.sessione = 'sessione inesistente';
+                    }else{
+                        self.resultJson = jsonResponse;
+                    }
+                },
+
+                )
+            },
+
+            }
+
+
+
+    })
+
+    //vue prenota ripetizioni admin
+    var prenotaRipetizioniAdmin=new Vue({
+        el:'#prenota-ripetizioni',
+        data:{
+            id_corso:'',
+            id_docente:'',
+            ora:'Seleziona orario',
+            giorno:'Seleziona giorno',
+            utente: '',
+            resultJson2:'',
+
+        },
+        methods:{
+            prenota:function (id_docente,id_corso,ora,giorno){
+                let self=this;
+                $.post('prenota-servlet',{id_docente:id_docente, id_corso:id_corso, ora:ora,giorno:giorno,sessione:login.sessione},function (data){
+                    if(data === 'sessione scaduta'){
+                        window.alert("Sessione scaduta, riaccedi.");
+                        window.location.reload();
+                        login.sessione = 'sessione inesistente';
+                    }else {
+                        administrator.passPrenota();
+                    }
+                });
+
+
+            },
+
+            ripetizioni:async function (){
+                let self=this;
+                await $.get('ripetizioni-prenotate-servlet',{},function (data){
+                    self.resultJson2=JSON.parse(JSON.stringify(data));
+                });
+
+            },
+
+            conferma:function (id_docente,id_corso,ora,data){
+                $.post('gestione-servlet',{id_docente:id_docente, id_corso:id_corso, ora:ora,data:data,post:'conferma',sessione:login.sessione},function (data){
+                    if(data === 'sessione scaduta'){
+                        window.alert("Sessione scaduta, riaccedi.");
+                        window.location.reload();
+                        login.sessione = 'sessione inesistente';
+                    }else {
+                        catalogoRipetizioni.getRipetizioni();
+                        prenotaRipetizioniAdmin.ripetizioni();
+                    }
+                });
+            },
+            disdici:function (id_docente,id_corso,ora,data){
+                $.post('gestione-servlet',{id_docente:id_docente, id_corso:id_corso, ora:ora,data:data,post:'disdici',sessione:login.sessione},function (data){
+                    if(data === 'sessione scaduta'){
+                        window.alert("Sessione scaduta, riaccedi.");
+                        window.location.reload();
+                        login.sessione = 'sessione inesistente';
+                    }else {
+                        catalogoRipetizioni.getRipetizioni();
+                        prenotaRipetizioniAdmin.ripetizioni();
+                    }
+                });
+            },
+
+
+        }
+    })
+
+    //vue associazione
+    var assocaizione=new Vue({
+        el:'#associazione-c-d',
+        data:{
+            corso:'',
+            docente:'',
+            disp:'Disponibilità',
+            resultJson3:'',
+        },
+        methods:{
+            addAssociazione: function (){
+                console.log(this.corso,  this.docente, this.disp);
+                let self=this;
+                $.post('associazione-servlet',{corso:this.corso,docente:this.docente,disp:this.disp,sessione:login.sessione,post:"aggiungi"},function (data){
+                    if(data === 'sessione scaduta'){
+                        window.alert("Sessione scaduta, riaccedi.");
+                        window.location.reload();
+                        login.sessione = 'sessione inesistente';
+                    }else if(data === 'true'){
+                        window.alert("Associazione aggiunta con successo.");
+                        document.getElementById('docente_associazione').value = "";
+                        document.getElementById('course_associazione').value = "";
+                        administrator.passAssocia();
+                    }else if(data === 'false'){
+                        window.alert("Errore nell'aggiunta dell'associazione, controlla gli id o che non vi siano già associazioni esistenti.");
+                        document.getElementById('docente_associazione').value = "";
+                        document.getElementById('course_associazione').value = "";
+                    }
+                })
+            },
+
+
+            getAssociazioni:function (){
+                let self=this;
+                $.get('associazione-servlet',{},function (data){
+                    let jsonResponse=JSON.parse(JSON.stringify(data));
+                    self.resultJson3 = jsonResponse;
+                })
+            },
+
+            delAssociazione:function (docente,corso) {
+                $.post('associazione-servlet',{sessione:login.sessione,post:"elimina",docente:docente,corso:corso},function (data) {
+                    if(data === 'sessione scaduta'){
+                        window.alert("Sessione scaduta, riaccedi.");
+                        window.location.reload();
+                        login.sessione = 'sessione inesistente';
+                    }
+                    administrator.passAssocia();
+                })
+            }
+        }
+
+    })
+
+    //STUDENT VUE
+    var student = new Vue({
+        el:'#homepage-student',
+        data:{
+            show: false,
+            prenotaRip:true,
+            resultJson:'',
+        },
+        methods:{
+            logout_student:function (){
+                login.sessione = "sessione inesistente";
+                window.location.reload();
+            },
+
+            prenota:function (id_docente,id_corso,ora,giorno){
+                $.post('prenota-servlet',{id_docente:id_docente, id_corso:id_corso, ora:ora,giorno:giorno,sessione:login.sessione},function (data){
+                    if(data === 'sessione scaduta'){
+                        window.alert("Sessione scaduta, riaccedi.");
+                        window.location.reload();
+                        login.sessione = 'sessione inesistente';
+                    }else{
+                        catalogoRipetizioni.getRipetizioni();
+                    }
+                });
+
+            },
+            ripetizioni:function (){
+                let self=this;
+                $.get('ripetizioni-prenotate-servlet',{},function (data){
+                    self.resultJson=JSON.parse(JSON.stringify(data));
+                })
+            },
+
+            conferma:function (id_docente,id_corso,ora,data){
+                $.post('gestione-servlet',{id_docente:id_docente, id_corso:id_corso, ora:ora,data:data,post:'conferma',sessione:login.sessione},function (data){
+                    if(data === 'sessione scaduta'){
+                        window.alert("Sessione scaduta, riaccedi.");
+                        window.location.reload();
+                        login.sessione = 'sessione inesistente';
+                    }else {
+                        catalogoRipetizioni.getRipetizioni();
+                        student.ripetizioni();
+                    }
+                });
+            },
+
+            disdici:function (id_docente,id_corso,ora,data){
+                $.post('gestione-servlet',{id_docente:id_docente, id_corso:id_corso, ora:ora,data:data,post:'disdici',sessione:login.sessione},function (data){
+                    if(data === 'sessione scaduta'){
+                        window.alert("Sessione scaduta, riaccedi.");
+                        window.location.reload();
+                        login.sessione = 'sessione inesistente';
+                    }else{
+                        catalogoRipetizioni.getRipetizioni();
+                        student.ripetizioni();
+                    }
+                });
+            },
+        }
+    })
+
+    //GUEST VUE
+    var guest = new Vue({
+        el:'#homepage-guest',
+        data:{
+            show: false,
+            resultJson:''
+        },
+        methods:{
+            getRipetizioni:function (){
+                let self=this;
+                $.get('guest-servlet', {},function (data){
+                    let jsonResponse=JSON.parse(JSON.stringify(data));
+                    if(jsonResponse===null){
+                        window.alert("Sessione scaduta, riaccedi.");
+                        window.location.reload();
+                        login.sessione = 'sessione inesistente';
+                    }else{
+                        self.resultJson = jsonResponse;
+                    }
+                } )
+            },
+
+            logout_guest:function (){
+                window.location.reload();
+
+            }
+
+        }
+    })
+</script>
+</body>
+</html>

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/Users/seraf/Desktop/PrenotazoniTorinoApp/app/src/main/res/layout/activity_main.xml" value="0.25" />
+        <entry key="..\:/Users/seraf/Desktop/PrenotazoniTorinoApp/app/src/main/res/layout/content_guest.xml" value="0.25" />
+        <entry key="..\:/Users/seraf/Desktop/PrenotazoniTorinoApp/app/src/main/res/layout/fragment_dashboard.xml" value="0.25" />
+        <entry key="..\:/Users/seraf/Desktop/PrenotazoniTorinoApp/app/src/main/res/layout/fragment_first.xml" value="0.25" />
+        <entry key="..\:/Users/seraf/Desktop/PrenotazoniTorinoApp/app/src/main/res/layout/fragment_home.xml" value="0.25" />
+        <entry key="..\:/Users/seraf/Desktop/PrenotazoniTorinoApp/app/src/main/res/layout/fragment_notifications.xml" value="0.25" />
+        <entry key="..\:/Users/seraf/Desktop/PrenotazoniTorinoApp/app/src/main/res/layout/fragment_second.xml" value="0.25" />
+        <entry key="..\:/Users/seraf/Desktop/PrenotazoniTorinoApp/app/src/main/res/layout/guest.xml" value="0.25" />
+        <entry key="..\:/Users/seraf/Desktop/PrenotazoniTorinoApp/app/src/main/res/layout/list_custom.xml" value="0.25" />
+        <entry key="..\:/Users/seraf/Desktop/PrenotazoniTorinoApp/app/src/main/res/layout/login.xml" value="0.25" />
+        <entry key="..\:/Users/seraf/Desktop/PrenotazoniTorinoApp/app/src/main/res/layout/priva.xml" value="0.25" />
+        <entry key="..\:/Users/seraf/Desktop/PrenotazoniTorinoApp/app/src/main/res/menu/bottom_nav_menu.xml" value="0.1359375" />
+        <entry key="..\:/Users/seraf/Documents/PrenotazoniTorinoApp/app/src/main/res/layout/activity_main.xml" value="0.1359375" />
+        <entry key="..\:/Users/seraf/Documents/PrenotazoniTorinoApp/app/src/main/res/layout/fragment_dashboard.xml" value="0.25" />
+        <entry key="..\:/Users/seraf/Documents/PrenotazoniTorinoApp/app/src/main/res/layout/fragment_home.xml" value="0.136" />
+        <entry key="..\:/Users/seraf/Documents/PrenotazoniTorinoApp/app/src/main/res/layout/fragment_notifications.xml" value="0.25" />
+        <entry key="..\:/Users/seraf/Documents/PrenotazoniTorinoApp/app/src/main/res/layout/list_custom.xml" value="0.1359375" />
+        <entry key="..\:/Users/seraf/Documents/PrenotazoniTorinoApp/app/src/main/res/layout/list_custom2.xml" value="0.1359375" />
+        <entry key="..\:/Users/seraf/Documents/PrenotazoniTorinoApp/app/src/main/res/menu/bottom_nav_menu.xml" value="0.25" />
+      </map>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/build/classes" />
+  </component>
+  <component name="ProjectType">
+    <option name="id" value="Android" />
+  </component>
+</project>
